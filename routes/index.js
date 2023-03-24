@@ -804,6 +804,20 @@ router.get('/viewStock',isLoggedIn, (req, res) => {
   })
 
 
+  router.post('/verifyScan',function(req,res){
+  
+    var barcodeNumber = req.body.code
+     Order2.find({barcodeNumber:barcodeNumber},function(err,docs){
+    if(docs == undefined){
+      res.redirect('/verify')
+    }else
+    console.log(docs,'docs')
+   
+       res.send(docs[0])
+     })
+   })
+   
+
   //Autocomplete for student details when recording school fees
   router.get('/autocompleteX/',isLoggedIn, function(req, res, next) {
     var code
