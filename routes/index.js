@@ -873,7 +873,7 @@ Book.findOne({'code':code})
         
         }
     })
-    res.redirect('/addStock')
+ 
   
 
     })
@@ -882,6 +882,9 @@ Book.findOne({'code':code})
     req.session.message = {
       type:'errors',
       message:'Book does not exists'
+
+
+
     }   
 
     res.render('stock',{
@@ -891,6 +894,7 @@ Book.findOne({'code':code})
 
 
 })
+res.redirect('/addStock')
 
 })
 
