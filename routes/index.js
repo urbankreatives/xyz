@@ -13,6 +13,7 @@ var PStats = require('../models/productStats');
 var CStats = require('../models/categoryStats');
 var IncStats = require('../models/incomeStats');
 var Order2 = require('../models/order2');
+var Note = require('../models/note');
 var SalesStats= require('../models/salesStats');
 const keys = require('../config1/keys')
 const stripe = require('stripe')('sk_test_IbxDt5lsOreFtqzmDUFocXIp0051Hd5Jol');
@@ -472,12 +473,38 @@ router.post('/categoryChart', function(req,res){
 
       router.get('/dash',isLoggedIn,function(req,res){
         var pro = req.user
-          res.render('index',{pro:pro})
-        })
+        Note.find({},function(err,docs){
 
+      
+          res.render('index',{pro:pro,list:docs})
+        })
+      })
+
+
+
+      router.get('/msg',function(req,res){
+        res.render('inbox')
+      })
+
+
+      router.get('/comp',function(req,res){
+        res.render('compose')
+      })
+
+
+router.get('/reply',function(req,res){
+  res.render('reply')
+})
 
 router.get('/add',function(req,res){
-  res.render('admit')
+
+  var pro = req.user
+  Note.find({},function(err,docs){
+
+
+    res.render('admit',{pro:pro,list:docs})
+  })
+ 
 })
 
 router.post('/add', function(req,res){
@@ -576,6 +603,90 @@ router.post('/add', function(req,res){
 })
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+router.get('/notify',isLoggedIn, function(req,res){
+  res.render('notifs')
+})
+
+router.post('/notify',isLoggedIn, function(req,res){
+  var m = moment()
+                  var year = m.format('YYYY')
+                  
+                var subject = req.body.subject
+                var message = req.body.message
+                var role = req.user.role
+                var user = req.user.fullname
+           
+                console.log(role,'role')
+                req.check('subject','Enter Subject').notEmpty();
+                req.check('message','Enter Message').notEmpty();
+              
+               
+                    
+                
+                      
+                   
+                var errors = req.validationErrors();
+                    if (errors) {
+                
+                    
+                      req.session.errors = errors;
+                      req.session.success = false;
+                      res.render('notifs',{ errors:req.session.errors,})
+                      
+                    
+                  }
+                  else{
+
+              
+              
+                  var not = new Note();
+                  not.role = role
+                  not.subject = subject;
+                  not.message = message
+                  not.status = 'null';
+                  not.status1 = 'null';
+                  not.user = user;
+                  not.type = 'null'
+                 
+
+          
+                  
+                  
+               
+
+                  
+                   
+              
+                   
+          
+                  not.save()
+                    .then(user =>{
+                      
+                })
+
+              }
+                              
+
+                  
+})
+
+
+
+
+
+
 router.get("/logout", (req, res) => {
   req.logout(req.user, err => {
     if(err) return next(err);
@@ -602,12 +713,12 @@ router.get('/info', isLoggedIn,function(req,res){
 router.post('/info',isLoggedIn, upload.single('file'),function(req,res){
   var pro = req.user
   var title = req.body.title
-  var barcode = req.body.barcode
+
   var category = req.body.category
   var code = req.body.code
   var price = req.body.price
         req.check('title','Enter Book Title').notEmpty();
-               req.check('barcode','Enter Barcode Number').notEmpty();
+            
                req.check('code','Enter Book Code').notEmpty();
                req.check('price','Enter Book Price').notEmpty();
                req.check('category', 'Enter Category').notEmpty();

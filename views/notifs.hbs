@@ -714,17 +714,16 @@
 												<!--begin::Tab panel-->
 												<div class="tab-pane fade show active" id="kt_topbar_notifications_1" role="tabpanel">
 													<!--begin::Items-->
-													   {{#each list}}
 													<div class="scroll-y mh-325px my-5 px-8">
 														<!--begin::Item-->
 														<div class="d-flex flex-stack py-4">
 															<!--begin::Section-->
 															<div class="d-flex align-items-center me-2">
 																<!--begin::Code-->
-																<span class="w-70px badge badge-light-success me-4">{{this.role}}</span>
+																<span class="w-70px badge badge-light-success me-4">200 OK</span>
 																<!--end::Code-->
 																<!--begin::Title-->
-																<a href="#" class="text-gray-800 text-hover-primary fw-bold">{{this.subject}}</a>
+																<a href="#" class="text-gray-800 text-hover-primary fw-bold">New order</a>
 																<!--end::Title-->
 															</div>
 															<!--end::Section-->
@@ -737,7 +736,6 @@
 												
 														<!--end::Item-->
 													</div>
-													 {{/each}}
 													<!--end::Items-->
 													<!--begin::View more-->
 													<div class="py-3 text-center border-top">
@@ -955,7 +953,7 @@
             <strong>{{message.intro}}</strong>{{message.message}}
         </div>
         {{/if}}
-												<form id="kt_ecommerce_settings_general_form" class="form" method="post" action="/add"  autocomplete="off">
+												<form id="kt_ecommerce_settings_general_form" class="form" method="post" action="/notify"  autocomplete="off">
 													<!--begin::Input group-->
 													<div class="mb-7">
 														<!--begin::Label-->
@@ -1005,12 +1003,12 @@
 															<div class="fv-row mb-7">
 																<!--begin::Label-->
 																<label class="fs-6 fw-bold form-label mt-3">
-																	<span class="required">Name</span>
+																	<span class="required">Subject</span>
 																	<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" ></i>
 																</label>
 																<!--end::Label-->
 																<!--begin::Input-->
-																<input type="text" class="form-control form-control-solid" name="name" id="name" value="" />
+																<input type="text" class="form-control form-control-solid" name="subject" id="subject" value="" />
 																<!--end::Input-->
 															</div>
 															<!--end::Input group-->
@@ -1022,12 +1020,12 @@
 															<div class="fv-row mb-7">
 																<!--begin::Label-->
 																<label class="fs-6 fw-bold form-label mt-3">
-																	<span>Surname</span>
+																	<span>Message</span>
 																	<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" ></i>
 																</label>
 																<!--end::Label-->
 																<!--begin::Input-->
-																<input type="text" class="form-control form-control-solid" name="surname" id="surname" value=""  />
+																<input type="text" class="form-control form-control-solid" name="message" id="message" value=""  />
 																<!--end::Input-->
 															</div>
 															<!--end::Input group-->
@@ -1037,79 +1035,7 @@
 													<!--end::Row-->
 													<!--begin::Row-->
 													                        								<!--begin::Row-->
-													<div class="row row-cols-1 row-cols-sm-2 rol-cols-md-1 row-cols-lg-2">
-														<!--begin::Col-->
-														<div class="col">
-															<!--begin::Input group-->
-															<div class="fv-row mb-7">
-																<!--begin::Label-->
-																<label class="fs-6 fw-bold form-label mt-3">
-																	<span class="required">Phone</span>
-																	<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"  title=""></i>
-																</label>
-																<!--end::Label-->
-																<!--begin::Input-->
-																<input type="text" class="form-control form-control-solid" name="mobile" value=""   />
-																<!--end::Input-->
-															</div>
-															<!--end::Input group-->
-														</div>
-														<!--end::Col-->
-														<!--begin::Col-->
-														<div class="col">
-															<!--begin::Input group-->
-															<div class="fv-row mb-7">
-																<!--begin::Label-->
-																<label class="fs-6 fw-bold form-label mt-3">
-																	<span>Email</span>
-																	<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" ></i>
-																</label>
-																<!--end::Label-->
-																<!--begin::Input-->
-																<input type="email" class="form-control form-control-solid" name="email" id="email" value="" />
-																<!--end::Input-->
-															</div>
-															<!--end::Input group-->
-														</div>
-														<!--end::Col-->
-													</div>
-													<!--end::Row-->
-
-                                                    								<!--begin::Row-->
-													<div class="row row-cols-1 row-cols-sm-2 rol-cols-md-1 row-cols-lg-2">
-														<!--begin::Col-->
-														<div class="col">
-															<!--begin::Input group-->
-															<div class="fv-row mb-7">
-																<!--begin::Label-->
-																<label class="fs-6 fw-bold form-label mt-3">
-																	<span class="required">Password</span>
-																	<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"></i>
-																</label>
-																<!--end::Label-->
-																<!--begin::Input-->
-																<input type="password" class="form-control form-control-solid" name="password" id="password" value=""  {{readonly}} />
-																<!--end::Input-->
-															</div>
-															<!--end::Input group-->
-														</div>
-														<!--end::Col-->
-														<!--begin::Col-->
-														<div class="col">
-															<!--begin::Input group-->
-															<div class="fv-row mb-7">
-																<!--begin::Label-->
-																<label class="fs-6 fw-bold form-label mt-3">
-																	<span>Confirm Password</span>
-																	<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" ></i>
-																</label>
-																<!--end::Label-->
-																<!--begin::Input-->
-																<input type="password" class="form-control form-control-solid" name="confirmPassword" id="confirmPassword" value=""  {{readonly}} />
-																<!--end::Input-->
-															</div>
-															<!--end::Input group-->
-														</div>
+													
 														<!--end::Col-->
 													</div>
 													<!--end::Row-->
