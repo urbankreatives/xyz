@@ -1187,7 +1187,7 @@ Book.find({},function(err,docs){
 
           router.post('/checkout',isLoggedIn,  function(req, res, next) {
             if (!req.session.cart) {
-                return res.redirect('/cart');
+                return res.redirect('/dash');
             }
             var cart = new Cart(req.session.cart);
             
@@ -1210,7 +1210,7 @@ Book.find({},function(err,docs){
                
                     console.log(err.message)
                     console.log(req.body.slot,'ma1')
-                    return res.redirect('/cart');
+                    return res.redirect('/dash');
                 }
                 var order = new Order({
                    
