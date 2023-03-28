@@ -746,7 +746,7 @@ router.post('/info',isLoggedIn, upload.single('file'),function(req,res){
 
                  else
                  {
-                  Book.findOne({'code':code, 'barcodeNumer':barcode})
+                  Book.findOne({'code':code})
                   .then(bk =>{
                       if(bk){ 
                     // req.session.errors = errors
